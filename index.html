@@ -53,8 +53,8 @@
 
   /* hero */
   .hero{position:relative;background:linear-gradient(160deg,var(--deep) 0%, var(--mid) 100%);color:#fff;overflow:hidden;padding:56px 0 0;}
-  .hero-inner{max-width:1120px;margin:0 auto;padding:0 28px 110px;position:relative;z-index:2;display:grid;grid-template-columns:1.3fr 0.7fr;gap:40px;align-items:center;}
-  @media(max-width:860px){.hero-inner{grid-template-columns:1fr;}}
+  .hero-inner{max-width:1120px;margin:0 auto;padding:0 28px 110px;position:relative;z-index:2;}
+  .hero-inner > div{max-width:640px;}
   .eyebrow{font-family:var(--font-mono);font-size:0.76rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--aqua);margin:0 0 16px;}
   .hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(2.2rem,5vw,3.3rem);line-height:1.08;margin:0 0 18px;}
   .hero h1 em{font-style:italic;color:var(--aqua);font-weight:500;}
@@ -62,14 +62,6 @@
   .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px;}
   .hero-phones{font-family:var(--font-mono);font-size:0.82rem;color:rgba(255,255,255,0.65);}
   .hero-phones a{text-decoration:none;border-bottom:1px dotted rgba(255,255,255,0.4);}
-
-  .badge-drop-holder{display:flex;flex-direction:column;align-items:center;gap:10px;justify-self:center;}
-  .badge-drop{width:140px;height:140px;background:linear-gradient(135deg, var(--aqua), var(--mid) 80%);border-radius:50% 50% 50% 0;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 38px -10px rgba(0,0,0,0.45);}
-  .badge-drop__inner{transform:rotate(-45deg);text-align:center;}
-  .badge-drop__num{font-family:var(--font-display);font-weight:600;font-size:2.3rem;color:var(--deep);line-height:1;}
-  .badge-drop__stars{font-size:0.82rem;color:var(--sun-deep);letter-spacing:0.03em;margin-top:2px;}
-  .badge-drop__label{font-family:var(--font-mono);font-size:0.6rem;color:var(--deep);opacity:0.75;margin-top:2px;}
-  .badge-caption{font-family:var(--font-mono);font-size:0.7rem;color:rgba(255,255,255,0.7);text-align:center;}
 
   .wave-amb{position:absolute;inset:0;opacity:0.1;pointer-events:none;}
   .wave-amb svg{width:220%;height:100%;animation:drift 22s linear infinite;}
@@ -102,21 +94,32 @@
   /* water quality */
   .water-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:start;}
   @media(max-width:860px){.water-grid{grid-template-columns:1fr;}}
-  .steps{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;}
-  .step{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);}
-  .step:last-child{border-bottom:none;}
-  .step .n{font-family:var(--font-mono);font-size:0.72rem;color:var(--mid);width:22px;flex-shrink:0;padding-top:2px;}
-  .step p{margin:0;font-size:0.94rem;}
+  .steps{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;}
+  .step-acc{border-bottom:1px solid var(--line);}
+  .step-acc:last-child{border-bottom:none;}
+  .step-acc summary{list-style:none;cursor:pointer;display:flex;gap:14px;align-items:center;padding:14px 10px;border-radius:10px;font-size:0.94rem;transition:background .15s ease, color .15s ease;}
+  .step-acc summary::-webkit-details-marker{display:none;}
+  .step-acc summary:hover{background:var(--foam);}
+  .step-acc[open] summary{background:var(--aqua);color:var(--deep);font-weight:600;}
+  .step-acc .n{font-family:var(--font-mono);font-size:0.72rem;color:var(--mid);width:22px;flex-shrink:0;}
+  .step-acc[open] .n{color:var(--deep);}
+  .step-acc .ico{margin-left:auto;font-family:var(--font-mono);font-size:1rem;color:var(--mid);transition:transform .2s ease;flex-shrink:0;}
+  .step-acc[open] .ico{transform:rotate(45deg);color:var(--deep);}
+  .step-detail{margin:0 10px 14px 46px;font-size:0.88rem;color:rgba(8,36,48,0.68);}
   .benefits{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
   .benefits li{display:flex;gap:10px;font-size:0.94rem;align-items:flex-start;}
   .benefits li .dot{width:6px;height:6px;border-radius:50%;background:var(--aqua);margin-top:8px;flex-shrink:0;}
   .price-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px;}
   @media(max-width:640px){.price-cards{grid-template-columns:1fr;}}
-  .price-card{background:var(--foam);border-radius:14px;padding:18px;text-align:center;}
+  .price-card{background:var(--foam);border-radius:14px;padding:18px;text-align:center;transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;cursor:default;}
+  .price-card:hover{transform:scale(1.07);background:var(--mid);color:#fff;box-shadow:0 14px 28px -10px rgba(28,114,147,0.5);}
   .price-card.promo{background:var(--deep);color:#fff;}
+  .price-card.promo:hover{background:var(--aqua);color:var(--deep);box-shadow:0 14px 28px -10px rgba(63,207,192,0.6);}
   .price-card .amt{font-family:var(--font-display);font-weight:600;font-size:1.5rem;}
   .price-card .lbl{font-size:0.8rem;color:rgba(8,36,48,0.65);margin-top:4px;}
   .price-card.promo .lbl{color:rgba(255,255,255,0.7);}
+  .price-card:hover .lbl{color:rgba(255,255,255,0.85);}
+  .price-card.promo:hover .lbl{color:rgba(8,36,48,0.7);}
 
   /* promotions */
   .promo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
@@ -159,29 +162,6 @@
   .pay-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;}
   .pay-pill{font-family:var(--font-mono);font-size:0.78rem;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;}
 
-  /* story */
-  .story{background:var(--deep);color:#fff;border-radius:24px;padding:48px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;}
-  @media(max-width:720px){.story{grid-template-columns:1fr;padding:34px 26px;}}
-  .story .quote-mark{font-family:var(--font-display);font-size:5rem;line-height:1;color:var(--aqua);font-style:italic;}
-  .story blockquote{margin:0 0 14px;font-family:var(--font-display);font-size:1.25rem;line-height:1.4;font-weight:400;font-style:italic;}
-  .story cite{font-family:var(--font-mono);font-size:0.76rem;color:rgba(255,255,255,0.65);font-style:normal;}
-
-  /* reviews */
-  .rev-summary{display:flex;align-items:center;gap:18px;margin-bottom:32px;flex-wrap:wrap;}
-  .rev-summary .big{font-family:var(--font-display);font-size:2.6rem;font-weight:600;color:var(--deep);}
-  .rev-summary .meta{display:flex;flex-direction:column;gap:2px;}
-  .rev-summary .stars{color:var(--sun-deep);letter-spacing:0.05em;}
-  .rev-summary .count{font-family:var(--font-mono);font-size:0.78rem;color:rgba(8,36,48,0.6);}
-  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  @media(max-width:860px){.reviews-grid{grid-template-columns:1fr;}}
-  .review-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px;}
-  .review-top{display:flex;align-items:center;gap:12px;}
-  .avatar{width:36px;height:36px;border-radius:50%;background:var(--mid);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:0.82rem;font-weight:500;flex-shrink:0;}
-  .review-name{font-weight:600;font-size:0.9rem;}
-  .review-time{font-family:var(--font-mono);font-size:0.68rem;color:rgba(8,36,48,0.5);}
-  .review-stars{color:var(--sun-deep);font-size:0.82rem;}
-  .review-card p{margin:0;font-size:0.9rem;color:rgba(8,36,48,0.78);}
-
   /* contacts */
   .loc{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch;}
   @media(max-width:860px){.loc{grid-template-columns:1fr;}}
@@ -218,14 +198,13 @@
     </a>
     <ul class="nav-links">
       <li><a href="#home">Головна</a></li>
-      <li><a href="#water">Вода</a></li>
       <li><a href="#promo">Акції</a></li>
+      <li><a href="#water">Вода</a></li>
       <li><a href="#equipment">Обладнання</a></li>
       <li><a href="#delivery">Доставка</a></li>
-      <li><a href="#reviews">Відгуки</a></li>
       <li><a href="#contacts">Контакти</a></li>
     </ul>
-    <a class="btn btn-sun nav-cta" href="tel:+380635781922">Замовити воду</a>
+    
   </div>
 </header>
 
@@ -244,17 +223,6 @@
           <a class="btn btn-sun" href="tel:+380635781922">Замовити воду</a>
           <a class="btn btn-outline" href="#delivery">Умови доставки</a>
         </div>
-        <p class="hero-phones">Телефони: <a href="tel:+380445781922">(044) 578 19 22</a> · <a href="tel:+380635781922">(063) 578 19 22</a> · <a href="tel:+380682394933">(068) 239 49 33</a> · <a href="tel:+380950048755">(095) 004 87 55</a></p>
-      </div>
-      <div class="badge-drop-holder">
-        <div class="badge-drop">
-          <div class="badge-drop__inner">
-            <div class="badge-drop__num">4.7</div>
-            <div class="badge-drop__stars">★★★★★</div>
-            <div class="badge-drop__label">39 відгуків</div>
-          </div>
-        </div>
-        <p class="badge-caption">Рейтинг у Google&nbsp;Картах</p>
       </div>
     </div>
     <div class="wave-bottom">
@@ -293,13 +261,34 @@
       <div class="water-grid">
         <div>
           <div class="steps">
-            <div class="step"><span class="n">01</span><p>Механічне очищення від домішок і часток</p></div>
-            <div class="step"><span class="n">02</span><p>Сорбційне очищення від хлору, органічних і хлорорганічних сполук</p></div>
-            <div class="step"><span class="n">03</span><p>Зворотний осмос — тонке очищення на молекулярному рівні</p></div>
-            <div class="step"><span class="n">04</span><p>Демінералізація</p></div>
-            <div class="step"><span class="n">05</span><p>Пом'якшення води</p></div>
-            <div class="step"><span class="n">06</span><p>Знезараження ультрафіолетом</p></div>
-            <div class="step"><span class="n">07</span><p>Контроль якості перед розливом у тару</p></div>
+            <details class="step-acc">
+              <summary><span class="n">01</span><span>Механічне очищення</span><span class="ico">+</span></summary>
+              <p class="step-detail">Каскад фільтрів затримує пісок, мул та зважені частки ще до основного очищення.</p>
+            </details>
+            <details class="step-acc">
+              <summary><span class="n">02</span><span>Сорбційне очищення</span><span class="ico">+</span></summary>
+              <p class="step-detail">Активоване вугілля поглинає хлор, хлорорганічні сполуки та сторонні запахи, не даючи їм впливати на смак.</p>
+            </details>
+            <details class="step-acc">
+              <summary><span class="n">03</span><span>Зворотний осмос</span><span class="ico">+</span></summary>
+              <p class="step-detail">Мембрана з порами на молекулярному рівні пропускає лише молекули води, відсіюючи навіть розчинені солі.</p>
+            </details>
+            <details class="step-acc">
+              <summary><span class="n">04</span><span>Демінералізація</span><span class="ico">+</span></summary>
+              <p class="step-detail">Прибираються надлишкові мінеральні солі, які впливають на смак і можуть накопичуватись в організмі.</p>
+            </details>
+            <details class="step-acc">
+              <summary><span class="n">05</span><span>Пом'якшення води</span><span class="ico">+</span></summary>
+              <p class="step-detail">Знижується жорсткість, тому вода не залишає накипу на чайнику й посуді.</p>
+            </details>
+            <details class="step-acc">
+              <summary><span class="n">06</span><span>УФ-знезараження</span><span class="ico">+</span></summary>
+              <p class="step-detail">Ультрафіолетове випромінювання нейтралізує бактерії та віруси без додавання хімічних речовин.</p>
+            </details>
+            <details class="step-acc">
+              <summary><span class="n">07</span><span>Контроль якості</span><span class="ico">+</span></summary>
+              <p class="step-detail">Перед розливом кожна партія перевіряється, щоб гарантувати однакову якість у кожному бутлі.</p>
+            </details>
           </div>
         </div>
         <div>
@@ -320,7 +309,7 @@
               <div class="amt">2,30 ₴</div>
               <div class="lbl">за літр, з іонами срібла</div>
             </div>
-            <div class="price-card promo">
+            <div class="price-card">
               <div class="amt">1,50 ₴</div>
               <div class="lbl">за літр, ціна для пенсіонерів</div>
             </div>
@@ -439,57 +428,6 @@
         </div>
       </div>
 
-      <div class="pay-row">
-        <span class="pay-pill">Готівка курʼєру</span>
-        <span class="pay-pill">Передоплата на картку Приватбанку</span>
-        <span class="pay-pill">Оплата за QR-кодом</span>
-        <span class="pay-pill">Оплата на сайті</span>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="story">
-        <div class="quote-mark">"</div>
-        <div>
-          <blockquote>Коли в будинку зникло світло, кур'єр все одно піднявся на десятий поверх із бутлем води — бо комусь вода потрібна саме сьогодні.</blockquote>
-          <cite>За мотивами відгуку клієнтки в Google Картах, листопад 2025</cite>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="reviews">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="section-eyebrow">Відгуки клієнтів</p>
-        <h2>Що кажуть про нас у Google Картах</h2>
-      </div>
-      <div class="rev-summary">
-        <div class="big">4.7</div>
-        <div class="meta">
-          <span class="stars">★★★★★</span>
-          <span class="count">на основі 39 відгуків</span>
-        </div>
-      </div>
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="review-top"><div class="avatar">ІЛ</div><div><div class="review-name">Ira L.</div><div class="review-time">6 місяців тому</div></div></div>
-          <div class="review-stars">★★★★★</div>
-          <p>Родина користується цією доставкою вже багато років — і сервіс жодного разу не підвів. Замовлення оформлюють швидко, а приїзди завжди стабільні й пунктуальні.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-top"><div class="avatar">АВ</div><div><div class="review-name">Аделіна Васильєва</div><div class="review-time">6 місяців тому</div></div></div>
-          <div class="review-stars">★★★★★</div>
-          <p>У будинку якраз не було світла, але кур'єр все одно підняв бутль на десятий поверх. Невелика турбота, яка залишила велике враження.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-top"><div class="avatar">ОС</div><div><div class="review-name">Ольга Сидоренко</div><div class="review-time">7 місяців тому</div></div></div>
-          <div class="review-stars">★★★★★</div>
-          <p>Вода смачна, без стороннього присмаку. Кур'єри привітні й акуратні — окрема подяка курʼєру Сергію за стабільну якість сервісу.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -504,7 +442,7 @@
           <div>
             <div class="loc-row"><span class="dot"></span><div><div class="k">Адреса</div><div class="v">м. Київ, вул. Єлизавети Чавдар, 13 (вхід з боку ЖК «Патріотика»)</div></div></div>
             <div class="loc-row"><span class="dot"></span><div><div class="k">Графік роботи</div><div class="v">Щодня з 09:00 до 21:00, без вихідних і свят</div></div></div>
-            <div class="loc-row"><span class="dot"></span><div><div class="k">Телефони</div><div class="v"><a href="tel:+380445781922">(044) 578 19 22</a> · <a href="tel:+380635781922">(063) 578 19 22</a> · <a href="tel:+380682394933">(068) 239 49 33</a> · <a href="tel:+380950048755">(095) 004 87 55</a></div></div></div>
+            <div class="loc-row"><span class="dot"></span><div><div class="k">Телефони</div><div class="v"><a href="tel:+380635781922">(063) 578 19 22</a> · <a href="tel:+380682394933">(068) 239 49 33</a></div></div></div>
             <div class="loc-row"><span class="dot"></span><div><div class="k">Email</div><div class="v"><a href="mailto:mail@osokorskaya.com.ua">mail@osokorskaya.com.ua</a> · <a href="mailto:osokorskaya@gmail.com">osokorskaya@gmail.com</a></div></div></div>
           </div>
           <div class="loc-actions">
@@ -519,18 +457,7 @@
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <div class="cta-foot">
-        <h2>Замовте воду на сьогодні</h2>
-        <p>Зателефонуйте — і свіжа вода буде у вас вдома чи в офісі ще до кінця дня.</p>
-        <div class="cta-row">
-          <a class="btn btn-sun" href="tel:+380635781922">063 578 19 22</a>
-          <a class="btn btn-outline" href="mailto:mail@osokorskaya.com.ua">Написати на email</a>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
 </main>
 
